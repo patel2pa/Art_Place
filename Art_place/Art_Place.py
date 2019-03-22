@@ -1,4 +1,3 @@
-
 class Art:
 
     def __init__(self, artist, title, year, medium, owner):
@@ -31,11 +30,11 @@ class Marketplace:
     def show_listing(self):
         for listing in self.listings:
             print(listing)
-            
+
 
 veneer = Marketplace()
 veneer.show_listing()
-    
+
 
 class Client:
 
@@ -48,19 +47,21 @@ class Client:
             self.location = 'Private Collection'
 
     def sell_artwork(self, artwork, price):
-        if artwork.artist == self.name:
-            veneer.add_listing(Listing(artwork, price, self.name))
+        if artwork.owner == self:
+            listing = (Listing(artwork, price, self))
+            veneer.add_listing(listing)
 
     def buy_artwork(self, artwork):
         if artwork.owner != self and artwork in veneer.listings:
             artwork.owner = self.name
             veneer.remove_listing(artwork)
 
+
 edytta = Client('Edytta Halpirt', None, False)
 moma = Client('The MOMA', 'New York', True)
 
 girl_with_mandolin = Art('Picasso, Pablo', 'Girl with a Maddolin', 1910, 'Oil on canvas', edytta)
-print(girl_with_mandolin)
+
 
 class Listing:
 
@@ -75,4 +76,4 @@ class Listing:
 
 edytta.sell_artwork(girl_with_mandolin, '$6 Million')
 
-print(veneer.show_listing())
+veneer.show_listing()
