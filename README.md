@@ -1,1 +1,1 @@
-# Art_Place is a program that demonstrate object oriented programming. 
+# Art_Place is a simple program that demonstrate object oriented programming. 
